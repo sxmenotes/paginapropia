@@ -1,0 +1,21 @@
+{
+  "name": "pagina-propia",
+  "version": "1.0.0",
+  "description": "Portafolio y sitio web personal de Samuel Valenzuela",
+  "main": "main.js",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [],
+  "author": "Samuel Valenzuela",
+  "license": "ISC",
+  "dependencies": {
+    "gsap": "^3.15.0",
+    "puppeteer": "^25.11.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.5.1"
+  }
+}

@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samuel Valenzuela — Estudio de Arquitectura Web &amp; Software de Alto Impacto</title>
+  <meta name="description"
+    content="Desarrollo web de alta gama y plataformas a medida por Samuel Valenzuela. Diseño editorial, velocidad extrema, código limpio y foco absoluto en conversión comercial.">
+  <meta name="author" content="Samuel Valenzuela">
+  <meta name="theme-color" content="#08090d">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Samuel Valenzuela — Arquitectura Web &amp; Software de Alto Impacto">
+  <meta property="og:description"
+    content="Plataformas web modernas, sin plantillas genéricas. Trato 1 a 1, rendimiento de clase mundial y retorno de inversión real.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://samuelvalenzuela.dev">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="./logos/isologo_white.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <!-- Ambient Grid & Technical Texture -->
+  <div class="ambient-grid" aria-hidden="true"></div>
+  <div class="ambient-light" aria-hidden="true"></div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header id="site-header">
+    <nav id="navbar" aria-label="Navegación principal">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo" aria-label="Samuel Valenzuela — Inicio">
+          <img src="./logos/logo_completo_white.png" alt="Samuel Valenzuela Logo" width="160" height="36"
+            class="nav-logo-img">
+        </a>
+
+        <div class="nav-links" id="nav-links">
+          <a href="#services" data-nav-link>Capacidades</a>
+          <a href="#proceso" data-nav-link>Metodología</a>
+          <a href="#projects" data-nav-link>Casos de Éxito</a>
+          <a href="#about" data-nav-link>Sobre Mí</a>
+          <a href="#cotizador" data-nav-link class="nav-link-highlight">Cotizar</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="https://calendar.app.google/SUbaA7Yw8eTLTrft7" target="_blank" rel="noopener noreferrer"
+            class="btn-nav-calendar" id="nav-calendar-cta">
+            <span>Agendar 20 min</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </a>
+
+          <button class="nav-menu-btn" id="menu-btn" aria-label="Abrir menú de navegación" aria-expanded="false"
+            aria-controls="nav-mobile">
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+        <div class="nav-mobile-inner">
+          <div class="nav-mobile-head">
+            <span class="nav-mobile-badge">Navegación</span>
+            <button class="nav-mobile-close" id="menu-close-btn" aria-label="Cerrar menú">✕</button>
+          </div>
+          <div class="nav-mobile-links">
+            <a href="#services" class="nav-mobile-link">Capacidades</a>
+            <a href="#proceso" class="nav-mobile-link">Metodología</a>
+            <a href="#projects" class="nav-mobile-link">Casos de Éxito</a>
+            <a href="#about" class="nav-mobile-link">Sobre Mí</a>
+            <a href="#cotizador" class="nav-mobile-link highlight">Cotizar</a>
+          </div>
+          <div class="nav-mobile-footer">
+            <a href="https://calendar.app.google/SUbaA7Yw8eTLTrft7" target="_blank" rel="noopener noreferrer"
+              class="btn-primary btn-full mobile-cal-btn">
+              <span>Agendar Reunión 1:1 en Calendar</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                aria-hidden="true">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+            <a href="https://wa.me/5491178281814" target="_blank" rel="noopener noreferrer"
+              class="btn-whatsapp btn-full mobile-wa-btn">
+              <span>WhatsApp Directo (Chat Inmediato)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="hero-section" aria-label="Introducción">
+      <div class="hero-container">
+
+        <!-- Header Row: Eyebrow -->
+        <div class="hero-header-row">
+          <div class="hero-eyebrow" id="hero-eyebrow">
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            <span class="eyebrow-pill">CONSULTORÍA &amp; DESARROLLO WEB</span>
+            <span class="eyebrow-note">Trato directo 1 a 1 · Sin agencias intermediarias</span>
+          </div>
+        </div>
+
+        <!-- Grand Editorial Headline (Spans Full Hero Width) -->
+        <div class="hero-headline-wrap">
+          <h1 class="hero-title">
+            <span class="title-line" id="tl1"><span class="split-word">Arquitectura</span> <span
+                class="split-word">&amp;</span></span>
+            <span class="title-line" id="tl2"><span class="split-word">Desarrollo</span> <span
+                class="split-word">Web</span></span>
+            <span class="title-line title-accent" id="tl3"><span class="split-word">de Alto Impacto</span><span
+                class="accent-dot">.</span></span>
+          </h1>
+        </div>
+
+        <!-- Middle Row: Value Proposition Narrative & Primary Conversion Cluster -->
+        <div class="hero-middle-row">
+          <p class="hero-desc" id="hero-desc">
+            Diseño y programo plataformas web de alta fidelidad para marcas y empresas que exigen diferenciación real.
+            Velocidad de carga instantánea, diseño con identidad de autor y arquitecturas escalables que generan resultados comerciales medibles.
+          </p>
+
+          <div class="hero-actions" id="hero-actions">
+            <a href="https://calendar.app.google/SUbaA7Yw8eTLTrft7" target="_blank" rel="noopener noreferrer"
+              class="btn-primary btn-hero-cal" id="hero-cta">
+              <span>Agendar llamada estratégica (20 min)</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+            <a href="#cotizador" class="btn-outline" id="hero-secondary">
+              <span>Cotizar proyecto por sector</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+              </svg>
+            </a>
+            <a href="https://wa.me/5491178281814" target="_blank" rel="noopener noreferrer"
+              class="btn-whatsapp hero-wa-btn" id="hero-wa" aria-label="Contactar directamente por WhatsApp">
+              <span>WhatsApp Directo</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Full-Width Distributed Proof & Guarantee Cards Grid -->
+        <div class="hero-proof-grid" id="hero-proof">
+          <div class="proof-card">
+            <div class="proof-card-header">
+              <span class="proof-card-num">+15</span>
+              <span class="proof-card-badge">Historial</span>
+            </div>
+            <span class="proof-card-title">Plataformas Lanzadas</span>
+            <p class="proof-card-desc">E-commerce de lujo, portales corporativos y sistemas de reservas funcionando con tráfico real.</p>
+          </div>
+
+          <div class="proof-card">
+            <div class="proof-card-header">
+              <span class="proof-card-num">&lt;0.8s</span>
+              <span class="proof-card-badge">Rendimiento</span>
+            </div>
+            <span class="proof-card-title">Carga LCP Garantizada</span>
+            <p class="proof-card-desc">Core Web Vitals en verde al 100%, compresión WebP/AVIF y renderizado cinemático instantáneo.</p>
+          </div>
+
+          <div class="proof-card">
+            <div class="proof-card-header">
+              <span class="proof-card-num">100%</span>
+              <span class="proof-card-badge">Ingeniería</span>
+            </div>
+            <span class="proof-card-title">Código a Medida</span>
+            <p class="proof-card-desc">Cero plantillas prefabricadas, cero constructores pesados. Control total sobre diseño y seguridad.</p>
+          </div>
+
+          <div class="proof-card">
+            <div class="proof-card-header">
+              <span class="proof-card-num">1 a 1</span>
+              <span class="proof-card-badge">Compromiso</span>
+            </div>
+            <span class="proof-card-title">Trato Directo</span>
+            <p class="proof-card-desc">Atención y consultoría directa con Samuel Valenzuela. Sin agencias intermediarias ni demoras burocráticas.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-scroll-indicator" id="hero-scroll" aria-hidden="true">
+        <span class="scroll-track"><span class="scroll-wheel"></span></span>
+        <span class="scroll-text">Explorar Capacidades &amp; Casos</span>
+      </div>
+    </section>
+
+    <!-- ===================== CAPACIDADES & SERVICIOS ===================== -->
+    <section id="services" class="section-block" aria-labelledby="services-heading">
+      <div class="section-container">
+
+        <div class="section-header reveal-elem">
+          <div class="section-tag-wrap">
+            <span class="section-index">01 // LO QUE CONSTRUYO</span>
+          </div>
+          <h2 class="section-title" id="services-heading">
+            Capacidades de<br><em>Ingeniería &amp; Diseño</em>
+          </h2>
+          <p class="section-lead">
+            Soluciones integrales de desarrollo sin la burocracia de las grandes agencias. Cada área está ejecutada con maestría técnica.
+          </p>
+        </div>
+
+        <div class="services-bento-grid">
+
+          <div class="service-bento-card reveal-elem">
+            <div class="sbc-num">01</div>
+            <h3 class="sbc-title">Desarrollo Web &amp; Frontend de Alta Gama</h3>
+            <p class="sbc-desc">
+              Interfaces web veloces, accesibles y con micro-interacciones de física natural. React, TypeScript, GSAP 3 y CSS moderno que garantizan una experiencia inolvidable para quien navega.
+            </p>
+            <ul class="sbc-features">
+              <li>Carga inicial menor a 0.8 segundos</li>
+              <li>Animaciones cinemáticas sin caídas de frames</li>
+              <li>Optimización táctil exhaustiva para móviles</li>
+            </ul>
+            <div class="sbc-tags">
+              <span>JavaScript ES6+</span><span>TypeScript</span><span>GSAP 3</span><span>HTML5 Semántico</span>
+            </div>
+          </div>
+
+          <div class="service-bento-card reveal-elem">
+            <div class="sbc-num">02</div>
+            <h3 class="sbc-title">CMS Autónomo &amp; Backend Escalable</h3>
+            <p class="sbc-desc">
+              Arquitecturas modernas basadas en Git (Decap CMS) o bases de datos relacionales (PostgreSQL, Node.js). El cliente actualiza su catálogo y textos sin intermediarios ni costosas cuotas de software.
+            </p>
+            <ul class="sbc-features">
+              <li>Autonomía total: edita fotos y textos tú mismo</li>
+              <li>Cero costos en plugins inflados de WordPress</li>
+              <li>APIs seguras y embudos directos a WhatsApp</li>
+            </ul>
+            <div class="sbc-tags">
+              <span>Decap CMS</span><span>GitHub API</span><span>Node.js</span><span>PostgreSQL</span>
+            </div>
+          </div>
+
+          <div class="service-bento-card reveal-elem">
+            <div class="sbc-num">03</div>
+            <h3 class="sbc-title">Estrategia UI/UX &amp; Optimización de Conversión</h3>
+            <p class="sbc-desc">
+              Diseño de interfaces en Figma y Stitch con foco en psicología de compra. Sistemas de diseño coherentes, jerarquía visual limpia y embudos pensados para cerrar acuerdos comerciales.
+            </p>
+            <ul class="sbc-features">
+              <li>Prototipado interactivo de alta fidelidad</li>
+              <li>Auditoría de usabilidad y reducción de rebote</li>
+              <li>Estructuras SEO con Schema.org completas</li>
+            </ul>
+            <div class="sbc-tags">
+              <span>Stitch System</span><span>Figma</span><span>Design Tokens</span><span>Schema.org</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== RUTA DE TRABAJO (METODOLOGÍA PROBADA) ===================== -->
+    <section id="proceso" class="section-block section-alt" aria-labelledby="proceso-heading">
+      <div class="section-container">
+
+        <div class="section-header reveal-elem">
+          <div class="section-tag-wrap">
+            <span class="section-index">02 // METODOLOGÍA PROBADA</span>
+          </div>
+          <h2 class="section-title" id="proceso-heading">
+            Ruta de Trabajo<br><em>Clara y sin Fricción</em>
+          </h2>
+          <p class="section-lead">
+            De la primera conversación al lanzamiento. Un proceso ágil y transparente con cronograma estricto, entregables garantizados y cero costes ocultos.
+          </p>
+        </div>
+
+        <div class="timeline-roadmap">
+
+          <!-- PASO 01 -->
+          <div class="roadmap-step reveal-elem">
+            <div class="step-badge">
+              <span class="step-num">01</span>
+              <span class="step-phase">Diagnóstico</span>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Sesión Inicial 1:1 &amp; Diagnóstico Estratégico</h3>
+              <p class="step-text">
+                Conversamos en directo y sin filtros. Analizamos a fondo el modelo de tu empresa, tu propuesta única de valor y qué acción concreta debe realizar el visitante en la web (cotizar, comprar, agendar o contactar).
+              </p>
+              <div class="step-footer">
+                <div class="step-deliverable">
+                  <span class="deliverable-icon" aria-hidden="true">✓</span>
+                  <span><strong>Entregable:</strong> Documento de alcance, hoja de ruta y presupuesto cerrado sin costes sorpresa.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PASO 02 -->
+          <div class="roadmap-step reveal-elem">
+            <div class="step-badge">
+              <span class="step-num">02</span>
+              <span class="step-phase">Estrategia</span>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Arquitectura Comercial &amp; Wireframing UX</h3>
+              <p class="step-text">
+                Antes de tocar colores o tipografías, trazamos el flujo de conversión. Definimos qué mensaje va en cada sección para que el cliente comprenda tu propuesta en menos de 5 segundos y se sienta guiado a la acción.
+              </p>
+              <div class="step-footer">
+                <div class="step-deliverable">
+                  <span class="deliverable-icon" aria-hidden="true">✓</span>
+                  <span><strong>Entregable:</strong> Estructura completa de navegación, mapa de sitio y wireframe de contenido optimizado.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PASO 03 -->
+          <div class="roadmap-step reveal-elem">
+            <div class="step-badge">
+              <span class="step-num">03</span>
+              <span class="step-phase">Diseño</span>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Diseño de Autor &amp; Sistema de Diseño Exclusivo</h3>
+              <p class="step-text">
+                Diseñamos una identidad digital única en Stitch y Figma. Tipografía con carácter, contrastes armónicos y componentes interactivos diseñados al milímetro para que tu web no se parezca a ninguna otra de tu sector.
+              </p>
+              <div class="step-footer">
+                <div class="step-deliverable">
+                  <span class="deliverable-icon" aria-hidden="true">✓</span>
+                  <span><strong>Entregable:</strong> Prototipo interactivo de alta fidelidad validado y aprobado antes de tirar una sola línea de código.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PASO 04 -->
+          <div class="roadmap-step reveal-elem">
+            <div class="step-badge">
+              <span class="step-num">04</span>
+              <span class="step-phase">Ingeniería</span>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Desarrollo Frontend Ultrarrápido &amp; Micro-animaciones</h3>
+              <p class="step-text">
+                Programación en código semántico y limpio. Orquestamos micro-interacciones suaves con GSAP 3 y aceleración por GPU que elevan la sensación de producto premium sin penalizar la velocidad de carga en móviles.
+              </p>
+              <div class="step-footer">
+                <div class="step-deliverable">
+                  <span class="deliverable-icon" aria-hidden="true">✓</span>
+                  <span><strong>Entregable:</strong> Código modular, accesible (WCAG), responsivo al 100% y con métricas Core Web Vitals en verde.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PASO 05 -->
+          <div class="roadmap-step reveal-elem">
+            <div class="step-badge">
+              <span class="step-num">05</span>
+              <span class="step-phase">Lanzamiento</span>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Auditoría, SEO Google, CMS Autónomo &amp; Salida al Mundo</h3>
+              <p class="step-text">
+                Conexión de dominio propio con certificado SSL, auditoría técnica completa, metadatos para redes sociales, integración de CMS para autogestión de contenidos y capacitación paso a paso para tu equipo.
+              </p>
+              <div class="step-footer">
+                <div class="step-deliverable">
+                  <span class="deliverable-icon" aria-hidden="true">✓</span>
+                  <span><strong>Entregable:</strong> Plataforma en vivo en servidores Edge de alta velocidad, indexada en Google y 100% de propiedad del cliente.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CALL TO ACTION BANNER DENTRO DEL PROCESO -->
+        <div class="roadmap-cta-card reveal-elem">
+          <div class="rc-left">
+            <span class="rc-badge">EL PRIMER PASO ES SENCILLO</span>
+            <h3 class="rc-title">¿Conversamos 20 minutos sobre tu proyecto?</h3>
+            <p class="rc-text">Sin compromisos ni presentaciones aburridas de ventas. Revisamos qué necesitas y te doy mi punto de vista técnico honesto.</p>
+          </div>
+          <div class="rc-right">
+            <a href="https://calendar.app.google/SUbaA7Yw8eTLTrft7" target="_blank" rel="noopener noreferrer"
+              class="btn-primary">
+              <span>Agendar en Google Calendar</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== CASOS DE ÉXITO REALES ===================== -->
+    <section id="projects" class="section-block" aria-labelledby="projects-heading">
+      <div class="section-container">
+        
+        <div class="section-header reveal-elem">
+          <div class="section-tag-wrap">
+            <span class="section-index">03 // CASOS DE ÉXITO</span>
+          </div>
+          <h2 class="section-title" id="projects-heading">
+            Casos de Éxito<br><em>con Retorno Medible</em>
+          </h2>
+          <p class="section-lead">
+            No desarrollo webs de adorno. Cada plataforma está pensada como una máquina comercial: estética de autor,
+            arquitectura de conversión y rendimiento Core Web Vitals verde al 100%.
+          </p>
+        </div>
+
+        <div class="case-studies-grid">
+
+          <!-- CASO 01: TORREALBA JOYAS -->
+          <article class="case-card reveal-elem" aria-labelledby="torrealba-title">
+            <div class="case-card-visual">
+              <div class="case-card-browser">
+                <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                <span class="browser-address">https://torrealbajoyas.cl</span>
+              </div>
+              <div class="case-card-image-wrap">
+                <img src="./assets/previews/torrealba-web.png" alt="Captura de pantalla de la web Torrealba Joyas"
+                  width="700" height="420" class="case-card-img">
+              </div>
+            </div>
+
+            <div class="case-card-info">
+              <div class="case-header-pill">
+                <span class="case-tag">Joyería de Autor &amp; E-Commerce</span>
+                <img src="./assets/logos/torrealba.png" alt="Logo Torrealba Joyas" height="24" class="case-logo-inline">
+              </div>
+
+              <h3 class="case-title" id="torrealba-title">Torrealba Joyas</h3>
+
+              <p class="case-summary">
+                Sitio web multi-página para una prestigiosa joyería de autor en Talca, especializada en anillos de compromiso y argollas matrimoniales.
+                Construcción modular con Bento Grid editorial y videos cinemáticos de fondo cargados mediante <strong>True Lazy Loading</strong> vía <code>IntersectionObserver</code>: el video solo consume ancho de banda al estar en pantalla.
+                Incluye galería mixta dinámica con Lightbox, tabs animados, SEO Local con <code>Schema.org LocalBusiness</code> y telemetría de rendimiento con Vercel Speed Insights.
+              </p>
+
+              <div class="case-metrics-bar">
+                <div class="case-metric">
+                  <span class="cm-num">+180%</span>
+                  <span class="cm-label">Interacción catálogo</span>
+                </div>
+                <div class="case-metric">
+                  <span class="cm-num">&lt;0.8s</span>
+                  <span class="cm-label">Carga LCP móvil</span>
+                </div>
+                <div class="case-metric">
+                  <span class="cm-num">100%</span>
+                  <span class="cm-label">SEO Local Schema</span>
+                </div>
+              </div>
+
+              <div class="case-tech-tags" aria-label="Tecnologías empleadas">
+                <span class="tech-tag">Bento Grid Editorial</span>
+                <span class="tech-tag">Lazy Video I/O</span>
+                <span class="tech-tag">Schema.org SEO</span>
+                <span class="tech-tag">Lightbox Pro</span>
+              </div>
+
+              <div class="case-actions">
+                <a href="https://torrealbajoyas.cl" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  <span>Explorar sitio web en vivo</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASO 02: OLIMPO CENTRO DE EVENTOS -->
+          <article class="case-card case-card-reverse reveal-elem" aria-labelledby="olimpo-title">
+            <div class="case-card-visual">
+              <div class="case-card-browser">
+                <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                <span class="browser-address">https://olimpocentrodeeventoscurico.cl</span>
+              </div>
+              <div class="case-card-image-wrap">
+                <img src="./assets/previews/olimpo-web.png" alt="Captura de pantalla de Olimpo Centro de Eventos"
+                  width="700" height="420" class="case-card-img">
+              </div>
+            </div>
+
+            <div class="case-card-info">
+              <div class="case-header-pill">
+                <span class="case-tag">Eventos Exclusivos &amp; CMS Autónomo</span>
+                <img src="./assets/logos/olimpo.png" alt="Logo Olimpo Centro de Eventos" height="24" class="case-logo-inline">
+              </div>
+
+              <h3 class="case-title" id="olimpo-title">Olimpo Centro de Eventos</h3>
+
+              <p class="case-summary">
+                Plataforma de alta fidelidad para el centro de eventos más prestigioso de Curicó (16 años de trayectoria, 3 salones y 5 estrellas en Matrimonios.cl).
+                Implementación de <strong>Decap CMS autónomo integrado con GitHub</strong>: el cliente actualiza fotografías, textos y disponibilidad sin requerir conocimientos de programación ni cuotas mensuales.
+                Incluye embudo de cotización que genera mensajes directos estructurados para WhatsApp, galería sincronizada y arquitectura SEO con <code>Schema.org EventVenue + FAQPage</code>.
+              </p>
+
+              <div class="case-metrics-bar">
+                <div class="case-metric">
+                  <span class="cm-num">+240%</span>
+                  <span class="cm-label">Cotizaciones WhatsApp</span>
+                </div>
+                <div class="case-metric">
+                  <span class="cm-num">100%</span>
+                  <span class="cm-label">Autogestión Decap CMS</span>
+                </div>
+                <div class="case-metric">
+                  <span class="cm-num">$0</span>
+                  <span class="cm-label">Costo en plugins/licencias</span>
+                </div>
+              </div>
+
+              <div class="case-tech-tags" aria-label="Tecnologías empleadas">
+                <span class="tech-tag">Decap CMS + GitHub</span>
+                <span class="tech-tag">Embudo WhatsApp</span>
+                <span class="tech-tag">Schema.org Venue</span>
+                <span class="tech-tag">Parallax Arquitectónico</span>
+              </div>
+
+              <div class="case-actions">
+                <a href="https://olimpocentrodeeventoscurico.cl" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  <span>Explorar sitio web en vivo</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== MARCAS QUE CONFÍAN EN MI TRABAJO ===================== -->
+    <section id="marcas" class="brands-section" aria-labelledby="brands-heading">
+      <div class="section-container">
+        
+        <div class="brands-header reveal-elem">
+          <span class="section-index">CONFIANZA &amp; TRAYECTORIA</span>
+          <h3 class="brands-title" id="brands-heading">Algunas marcas que han confiado en mi trabajo</h3>
+        </div>
+
+        <div class="brands-logos-grid reveal-elem">
+          <div class="brand-logo-item">
+            <img src="./assets/logos/torrealba.png" alt="Logo Torrealba Joyas" class="brand-pure-logo">
+          </div>
+          <div class="brand-logo-item">
+            <img src="./assets/logos/olimpo.png" alt="Logo Olimpo Centro de Eventos" class="brand-pure-logo">
+          </div>
+          <div class="brand-logo-item">
+            <img src="./assets/logos/joyas-neny.png" alt="Logo Joyas Neny" class="brand-pure-logo brand-logo-neny">
+          </div>
+          <div class="brand-logo-item">
+            <img src="./assets/logos/redprov.png" alt="Logo Red Proveedores" class="brand-pure-logo">
+          </div>
+          <div class="brand-logo-item">
+            <img src="./assets/logos/kintu.png" alt="Logo Kintu" class="brand-pure-logo">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== SOBRE MÍ & CREDENCIALES ===================== -->
+    <section id="about" class="section-block section-alt" aria-labelledby="about-heading">
+      <div class="section-container">
+
+        <div class="about-grid">
+
+          <div class="about-narrative reveal-elem">
+            <div class="section-tag-wrap">
+              <span class="section-index">04 // SOBRE MÍ</span>
+            </div>
+            <h2 class="section-title" id="about-heading">
+              Código con Alma,<br><em>Diseño con Intención</em>
+            </h2>
+            <p class="about-bio">
+              Soy Samuel Valenzuela, consultor y desarrollador web radicado en Chile. Ayudo a empresas y profesionales exigentes a transformar su presencia online en un activo comercial de alto nivel.
+            </p>
+            <p class="about-bio">
+              Mi filosofía es simple: no creo en soluciones prefabricadas ni en páginas desechables. Cada proyecto combina rigor de ingeniería de software con una dirección de arte cuidada al milímetro para generar confianza inmediata en tus clientes.
+            </p>
+
+            <div class="about-actions-row">
+              <a href="https://calendar.app.google/SUbaA7Yw8eTLTrft7" target="_blank" rel="noopener noreferrer"
+                class="btn-primary">
+                <span>Agendar reunión 1:1 (20 min)</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </a>
+              <button class="btn-outline" id="copy-email-btn" aria-label="Copiar correo electrónico al portapapeles">
+                <span id="copy-email-text">Copiar email</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="about-stats-panel reveal-elem">
+            <div class="stats-counters-grid">
+              
+              <div class="counter-card">
+                <div class="counter-number-row">
+                  <span class="metric-val" data-count="15">0</span>
+                  <span class="metric-suf">+</span>
+                </div>
+                <span class="metric-lbl">Plataformas desarrolladas</span>
+                <p class="metric-desc">Desde e-commerce de autor hasta portales corporativos de alto tráfico.</p>
+              </div>
+
+              <div class="counter-card">
+                <div class="counter-number-row">
+                  <span class="metric-val" data-count="100">0</span>
+                  <span class="metric-suf">%</span>
+                </div>
+                <span class="metric-lbl">Satisfacción de clientes</span>
+                <p class="metric-desc">Trato transparente, entregas en fecha y soporte continuo post-lanzamiento.</p>
+              </div>
+
+              <div class="counter-card">
+                <div class="counter-number-row">
+                  <span class="metric-static">&lt;0.8s</span>
+                </div>
+                <span class="metric-lbl">Tiempo de carga promedio</span>
+                <p class="metric-desc">Arquitectura ultraligera optimizada para Google Core Web Vitals.</p>
+              </div>
+
+              <div class="counter-card">
+                <div class="counter-number-row">
+                  <span class="metric-static">24/7</span>
+                </div>
+                <span class="metric-lbl">Acompañamiento continuo</span>
+                <p class="metric-desc">Soporte directo con el mismo profesional que escribió tu código.</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT & PROPOSAL SECTION ===================== -->
+    <section id="cotizador" class="section-block" aria-labelledby="contact-heading">
+      <div class="section-container">
+
+        <!-- Encabezado de Sección Centrado -->
+        <div class="section-header section-header-center reveal-elem">
+          <div class="section-tag-wrap">
+            <span class="section-index">05 // CONTACTO &amp; COTIZACIÓN</span>
+          </div>
+          <h2 class="section-title" id="contact-heading">
+            Iniciemos tu<br><em>Próxima Plataforma</em>
+          </h2>
+          <p class="section-lead">
+            Cuéntame sobre tu empresa y sector comercial. Elige la vía que te resulte más cómoda para comenzar a trabajar.
+          </p>
+        </div>
+
+        <div class="contact-split-layout">
+
+          <!-- Columna Izquierda: Vía Prioritaria Calendar & Canales Directos -->
+          <div class="contact-left-col reveal-elem">
+
+            <!-- Card Prioritaria: Google Calendar -->
+            <div class="calendar-priority-box">
+              <div class="cp-header">
+                <span class="cp-status-pill">
+                  <span class="pulse-dot" aria-hidden="true"></span>
+                  AGENDA ABIERTA ESTA SEMANA
+                </span>
+              </div>
+              <div class="cp-body">
+                <h3 class="cp-title">Llamada Estratégica 1:1</h3>
+                <p class="cp-desc">20 minutos en Google Calendar. Analizamos viabilidad técnica, arquitectura recomendada y estimación de tiempos sin compromiso ni rodeos.</p>
+                <a href="https://calendar.app.google/SUbaA7Yw8eTLTrft7" target="_blank" rel="noopener noreferrer"
+                  class="btn-primary cp-btn" id="main-calendar-btn">
+                  <span>Agendar en Google Calendar</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Canales Directos Rápidos -->
+            <div class="direct-channels-list">
+              <a href="https://wa.me/5491178281814" target="_blank" rel="noopener noreferrer"
+                class="direct-channel-item" id="whatsapp-cotizar-btn">
+                <div class="dc-icon dc-icon-wa" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                  </svg>
+                </div>
+                <div class="dc-info">
+                  <span class="dc-label">WhatsApp Directo</span>
+                  <span class="dc-val">Iniciar chat inmediato</span>
+                </div>
+                <span class="dc-arrow" aria-hidden="true">↗</span>
+              </a>
+
+              <a href="mailto:contacto@samuelvalenzuela.dev" class="direct-channel-item">
+                <div class="dc-icon dc-icon-mail" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </div>
+                <div class="dc-info">
+                  <span class="dc-label">Email Corporativo</span>
+                  <span class="dc-val">contacto@samuelvalenzuela.dev</span>
+                </div>
+                <span class="dc-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div class="contact-meta-note">
+              <span class="meta-dot" aria-hidden="true"></span>
+              <span>GMT-3 (Santiago / Buenos Aires) · Trabajo remoto para todo el mundo</span>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Formulario Limpio y Despejado -->
+          <div class="contact-right-col reveal-elem" id="contact">
+            <div class="clean-form-panel">
+              <div class="form-panel-header">
+                <span class="fp-kicker">PROPUESTA POR ESCRITO</span>
+                <h3 class="fp-title">Escríbeme los detalles</h3>
+                <p class="fp-desc">Cuéntame de tu empresa y requerimientos para enviarte una cotización preliminar en menos de 24 horas hábiles.</p>
+              </div>
+
+              <form class="streamlined-form" id="contact-form" novalidate>
+
+                <!-- Selector de Sector -->
+                <div class="form-sector-group">
+                  <label class="form-field-label">Sector de tu negocio</label>
+                  <div class="sector-pills" role="radiogroup" aria-label="Sector de tu negocio">
+                    <button type="button" class="sector-chip active" data-sector="Gastronomía &amp; Eventos" role="radio" aria-checked="true">Gastronomía &amp; Eventos</button>
+                    <button type="button" class="sector-chip" data-sector="Joyería &amp; Retail" role="radio" aria-checked="false">Joyería &amp; Retail</button>
+                    <button type="button" class="sector-chip" data-sector="Servicios B2B" role="radio" aria-checked="false">Servicios B2B</button>
+                    <button type="button" class="sector-chip" data-sector="Salud &amp; Bienestar" role="radio" aria-checked="false">Salud &amp; Bienestar</button>
+                    <button type="button" class="sector-chip" data-sector="Tecnología &amp; SaaS" role="radio" aria-checked="false">Tecnología &amp; SaaS</button>
+                    <button type="button" class="sector-chip" data-sector="Otro sector" role="radio" aria-checked="false">Otro sector</button>
+                  </div>
+                  <input type="hidden" id="contact-sector-input" name="sector" value="Gastronomía &amp; Eventos">
+                </div>
+
+                <!-- Fila: Nombre & Email -->
+                <div class="form-fields-row">
+                  <div class="form-field">
+                    <label for="contact-name" class="form-field-label">Nombre o empresa *</label>
+                    <input type="text" id="contact-name" name="name" required placeholder="Ej. Camila Torres" autocomplete="name">
+                  </div>
+
+                  <div class="form-field">
+                    <label for="contact-email" class="form-field-label">Email de contacto *</label>
+                    <input type="email" id="contact-email" name="email" required placeholder="camila@empresa.com" autocomplete="email">
+                  </div>
+                </div>
+
+                <!-- Mensaje -->
+                <div class="form-field">
+                  <label for="contact-message" class="form-field-label">¿En qué puedo ayudarte? *</label>
+                  <textarea id="contact-message" name="message" rows="4" required
+                    placeholder="Cuéntame brevemente sobre tu negocio, qué objetivos tienes y en qué plazos te gustaría lanzar…"></textarea>
+                </div>
+
+                <!-- Action Button -->
+                <div class="form-action-area">
+                  <button type="submit" class="btn-primary btn-submit-streamlined" id="submit-btn">
+                    <span id="submit-text">Enviar mensaje</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                  </button>
+                  <span class="action-reassurance">Sin spam. Respuesta en &lt; 24h.</span>
+                </div>
+
+                <div class="form-feedback" id="form-success" role="alert" aria-live="polite">
+                  ✓ ¡Mensaje recibido! Te responderé en menos de 24 horas hábiles.
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="site-footer">
+    <div class="footer-container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo-link" aria-label="Volver al inicio">
+            <img src="./logos/logo_completo_white.png" alt="Samuel Valenzuela" width="140" height="32" class="footer-logo-img">
+          </a>
+          <p class="footer-desc">
+            Desarrollo web y arquitectura de software de alto impacto. Código artesanal, velocidad garantizada y diseño orientado a conversión.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="fn-title">Navegación</span>
+          <a href="#services">Capacidades</a>
+          <a href="#proceso">Metodología</a>
+          <a href="#projects">Casos de Éxito</a>
+          <a href="#about">Sobre Mí</a>
+          <a href="#cotizador">Cotizador</a>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="fn-title">Contacto Rápido</span>
+          <a href="https://calendar.app.google/SUbaA7Yw8eTLTrft7" target="_blank" rel="noopener noreferrer">Google Calendar (20 min) ↗</a>
+          <a href="https://wa.me/5491178281814" target="_blank" rel="noopener noreferrer">WhatsApp Directo ↗</a>
+          <a href="mailto:contacto@samuelvalenzuela.dev">contacto@samuelvalenzuela.dev</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          <span>© 2026 Samuel Valenzuela — Arquitecto Digital &amp; Consultor Web.</span>
+        </div>
+        <div class="footer-links-right">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <span class="footer-location">Chile &amp; Latinoamérica</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification System -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-hidden="true"></div>
+
+  <!-- GSAP Local Scripts -->
+  <script src="./assets/js/gsap.min.js"></script>
+  <script src="./assets/js/ScrollTrigger.min.js"></script>
+  <script src="./main.js?v=20260915-rebuild"></script>
+</body>
+
+</html>
