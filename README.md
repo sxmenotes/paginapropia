@@ -97,3 +97,60 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](./LICENS
 - **Agenda una reunión**: [Google Calendar](https://calendar.app.google/SUbaA7Yw8eTLTrft7)
 - **WhatsApp**: [Chat directo](https://wa.me/5491178281814)
 - **GitHub**: [@sxmenotes](https://github.com/sxmenotes)
+
+---
+
+## 📋 Changelog
+
+### [1.1.0] — 2026-09-17 · SEO & Social Sharing
+
+#### ✨ Añadido
+- **`assets/og-image.jpg`** — Imagen Open Graph (1200×630px) con logo y branding del sitio para tarjetas de vista previa en redes sociales.
+- **`robots.txt`** — Control de indexación para bots de búsqueda (Google, Bing, etc.). Excluye `/404.html` del índice.
+- **`sitemap.xml`** — Mapa del sitio en formato XML para Google Search Console.
+- **`manifest.webmanifest`** — Web App Manifest para soporte PWA e instalación desde móvil.
+- **Open Graph completo** en `index.html`: `og:image`, `og:image:width/height/alt`, `og:site_name`, `og:locale`, URL corregida a `svalenzdweb.vercel.app`.
+- **Twitter/X Cards** (`summary_large_image`) en `index.html` y `404.html`.
+- **JSON-LD Schema.org** (`Person`) en `index.html` para Knowledge Panel de Google.
+- **`<link rel="canonical">`** y `<link rel="alternate" hreflang="es">` en `index.html`.
+- **`<meta name="keywords">`** y **`<meta name="robots" content="index, follow">`** en `index.html`.
+- **`<link rel="apple-touch-icon">`** y **`<link rel="manifest">`** en ambos HTML.
+
+#### 🔧 Modificado
+- `index.html` — Cabecera `<head>` completamente reescrita con todas las etiquetas SEO.
+- `404.html` — Añadido `<meta name="robots" content="noindex, follow">` y etiquetas OG/Twitter básicas.
+
+#### 🗂️ Estructura actualizada
+```text
+.
+├── assets/
+│   ├── js/
+│   ├── logos/
+│   ├── previews/
+│   └── og-image.jpg        # ← NUEVO: imagen para tarjetas de redes sociales
+├── logos/
+├── index.html
+├── style.css
+├── main.js
+├── manifest.webmanifest    # ← NUEVO
+├── robots.txt              # ← NUEVO
+├── sitemap.xml             # ← NUEVO
+├── vercel.json
+├── package.json
+├── LICENSE
+└── README.md
+```
+
+---
+
+### [1.0.0] — 2026-09-11 · Release Inicial
+
+- Lanzamiento del sitio personal y portafolio.
+- Diseño editorial con `Space Grotesk` y `JetBrains Mono`.
+- Cotizador dinámico interactivo.
+- Showcase de casos de éxito con previews en vivo.
+- Animaciones con GSAP + ScrollTrigger.
+- Página 404 personalizada.
+- Testing con Playwright + axe-core.
+- Configuración de despliegue en Vercel.
+

@@ -6,16 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página no encontrada — Samuel Valenzuela</title>
   <meta name="description" content="La página que buscas no existe o ha sido movida.">
+
+  <!-- Las páginas 404 NO deben indexarse en Google -->
+  <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#08090d">
+
+  <!-- Canónica apunta al inicio -->
+  <link rel="canonical" href="https://svalenzdweb.vercel.app/">
+
+  <!-- Open Graph (para el caso de que alguien comparta la URL del 404) -->
+  <meta property="og:title" content="Samuel Valenzuela — Página no encontrada">
+  <meta property="og:description" content="Esta página no existe, pero el resto del sitio sí.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://svalenzdweb.vercel.app/404.html">
+  <meta property="og:site_name" content="Samuel Valenzuela">
+  <meta property="og:image" content="https://svalenzdweb.vercel.app/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Samuel Valenzuela — Arquitectura Web & Software de Alto Impacto">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Samuel Valenzuela — Página no encontrada">
+  <meta name="twitter:image" content="https://svalenzdweb.vercel.app/assets/og-image.jpg">
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
   <link rel="icon" type="image/png" href="./logos/isologo_white.png">
+  <link rel="apple-touch-icon" href="./logos/isologo_white.png">
+  <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./style.css">
-  
+
+
   <style>
     .not-found-section {
       min-height: 100vh;
@@ -28,7 +55,7 @@
       position: relative;
       z-index: 2;
     }
-    
+
     .not-found-kicker {
       font-family: 'JetBrains Mono', monospace;
       color: #66fcf1;
@@ -75,7 +102,7 @@
 
     .btn-return:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
@@ -91,7 +118,8 @@
     <nav id="navbar" aria-label="Navegación principal">
       <div class="nav-inner">
         <a href="index.html" class="nav-logo" aria-label="Samuel Valenzuela — Inicio">
-          <img src="./logos/logo_completo_white.png" alt="Samuel Valenzuela Logo" width="160" height="36" class="nav-logo-img">
+          <img src="./logos/logo_completo_white.png" alt="Samuel Valenzuela Logo" width="160" height="36"
+            class="nav-logo-img">
         </a>
       </div>
     </nav>
@@ -102,9 +130,10 @@
       <span class="not-found-kicker">Error 404</span>
       <h1 class="not-found-title">404</h1>
       <p class="not-found-desc">La página que buscas ha sido movida a otro universo o simplemente no existe.</p>
-      
+
       <a href="index.html" class="btn-return">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
           <line x1="19" y1="12" x2="5" y2="12"></line>
           <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
@@ -115,4 +144,5 @@
 
   <script src="./main.js"></script>
 </body>
+
 </html>

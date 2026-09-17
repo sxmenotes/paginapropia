@@ -1,0 +1,9 @@
+# robots.txt — Samuel Valenzuela
+# https://svalenzdweb.vercel.app
+
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# Sitemap
+Sitemap: https://svalenzdweb.vercel.app/sitemap.xml
