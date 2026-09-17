@@ -333,7 +333,7 @@ function initCopyEmail() {
   if (!btn) return;
 
   btn.addEventListener('click', () => {
-    const email = 'contacto@samuelvalenzuela.dev';
+    const email = 'samuel.valenzueladiaz2@gmail.com';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(email).then(() => {
         showToast('✓ Email copiado: ' + email);
