@@ -135,6 +135,16 @@ a {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-subtle);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Navbar morphing state when user scrolls down */
+#site-header.scrolled {
+  background-color: rgba(8, 9, 13, 0.92);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255,255,255,0.05);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
 }
 
 #navbar {
@@ -1974,4 +1984,434 @@ a {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ============================================================
+   PRICING SECTION — PLANES & SERVICIOS
+   ============================================================ */
+
+.pricing-header {
+  margin-bottom: 3rem;
+  max-width: 720px;
+}
+
+/* --- Tab Switcher --- */
+.pricing-tabs-wrap {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 3rem;
+}
+
+.pricing-tabs-track {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  padding: 5px;
+  gap: 2px;
+}
+
+/* Animated sliding pill */
+.pricing-tab-pill {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: calc(100% - 10px);
+  width: 0;                  /* width set by JS */
+  background: linear-gradient(135deg, var(--accent-blue) 0%, #1d4ed8 100%);
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.4);
+  transition: left 0.38s cubic-bezier(0.45, 0, 0.15, 1),
+              width 0.38s cubic-bezier(0.45, 0, 0.15, 1);
+  pointer-events: none;
+  z-index: 0;
+  will-change: left, width;
+}
+
+.pricing-tab {
+  position: relative;
+  z-index: 1;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.pricing-tab.active,
+.pricing-tab:hover {
+  color: #ffffff;
+}
+
+/* --- Panel Transitions --- */
+/* Opacity/transform handled entirely by GSAP */
+.pricing-panel[hidden] {
+  display: none;
+}
+
+.pricing-panel-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  max-width: 780px;
+}
+
+.pricing-panel-desc strong {
+  color: var(--accent-cyan);
+}
+
+/* --- Cards Grid --- */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Pricing Card --- */
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-surface-card) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: border-color var(--transition-smooth), transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.pricing-card:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5), 0 0 24px rgba(37, 99, 235, 0.1);
+}
+
+/* Featured card */
+.pricing-card-featured {
+  border-color: var(--border-active);
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.07) 0%, var(--bg-surface-card) 60%);
+  box-shadow: 0 0 40px rgba(37, 99, 235, 0.14), 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.pricing-card-featured:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.55), 0 0 36px rgba(37, 99, 235, 0.22);
+}
+
+/* Badge "Más solicitado" */
+.pricing-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
+}
+
+/* Card head */
+.pricing-card-head {
+  margin-bottom: 1.5rem;
+}
+
+.pricing-plan-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  background-color: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.85rem;
+}
+
+.pricing-plan-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.pricing-plan-desc {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Feature list */
+.pricing-feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
+  margin-bottom: 2rem;
+}
+
+.pricing-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.pf-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+.pf-check {
+  color: var(--accent-green);
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.pf-disabled {
+  color: var(--text-muted);
+}
+
+.pf-disabled .pf-icon {
+  color: var(--text-muted);
+  background: none;
+}
+
+/* CTA button (dentro de cada card) */
+.pricing-cta {
+  margin-top: auto;
+  text-align: center;
+  width: 100%;
+}
+
+/* CTA único centrado debajo del grid de planes */
+.pricing-single-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.pricing-single-cta .pricing-cta {
+  max-width: 680px;
+  width: auto;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.5;
+  padding: 1rem 2rem;
+  font-size: 0.95rem;
+  margin-top: 0;
+}
+
+/* --- Change Minor/Mayor Callout --- */
+.pricing-change-callout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .pricing-change-callout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pcc-col {
+  padding: 1.5rem 1.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.pcc-included {
+  background-color: rgba(16, 185, 129, 0.05);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.pcc-extra {
+  background-color: rgba(37, 99, 235, 0.04);
+  border-color: var(--border-subtle);
+}
+
+.pcc-head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.pcc-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.pcc-included .pcc-icon {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--accent-green);
+}
+
+.pcc-extra .pcc-icon {
+  background-color: rgba(100, 116, 139, 0.15);
+  color: var(--text-muted);
+}
+
+.pcc-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pcc-col ul li {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  padding-left: 0.65rem;
+  border-left: 2px solid var(--border-subtle);
+}
+
+.pcc-note {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.pcc-note strong {
+  color: var(--accent-cyan);
+  font-style: normal;
+}
+
+/* --- Venta note --- */
+.pricing-venta-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: rgba(37, 99, 235, 0.06);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.pvn-icon {
+  font-size: 1.1rem;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pricing-venta-note p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.pricing-venta-note strong {
+  color: var(--text-primary);
+}
+
+/* --- Responsive Tab Track --- */
+@media (max-width: 560px) {
+  .pricing-tabs-track {
+    width: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  .pricing-tab {
+    flex: 1;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
+
+
+/* ============================================================
+   GSAP MOTION ENHANCEMENTS
+   ============================================================ */
+
+/* 3D tilt support — cards */
+.service-bento-card,
+.proof-card,
+.pricing-card,
+.roadmap-step {
+  transform-style: preserve-3d;
+  cursor: default;
+}
+
+/* GPU layer hint for parallax images */
+.case-card-img {
+  backface-visibility: hidden;
+}
+
+/* Brand logo hover — GPU composited */
+.brand-logo-item {
+  cursor: pointer;
+  backface-visibility: hidden;
+}
+
+/* Scroll wheel anim container */
+.scroll-wheel {
+  will-change: transform, opacity;
+}
+
+/* Nav link — GPU composited hover slide */
+[data-nav-link] {
+  display: inline-block;
+  backface-visibility: hidden;
 }

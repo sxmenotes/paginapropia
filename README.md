@@ -102,6 +102,23 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](./LICENS
 
 ## 📋 Changelog
 
+### [1.1.1] — 2026-09-18 · Mejoras UX/UI & GSAP Motion a 120Hz
+
+#### ✨ Añadido
+- **GSAP 120Hz Optimization**: Se implementó `gsap.ticker.fps(120)` y lag smoothing para micro-jank protection.
+- **Scroll Wheel Animado**: Animación infinita con GSAP para indicar interacción.
+- **Magnetic Buttons**: Botones y CTAs atraen el cursor al pasar por encima.
+- **3D Tilt Cards**: Efecto de perspectiva 3D (tracking de mouse) en tarjetas de servicios, casos de estudio y precios.
+- **GSAP Parallax**: Imágenes de casos de éxito reaccionan al scroll.
+- **Stagger Animado Dinámico**: Apariciones secuenciadas de elementos por sección.
+
+#### 🔧 Modificado
+- **Pricing Redesign**: Se unificaron los CTAs en un botón central por sección (en vez de uno por card) y textos aclaratorios en modo Venta para entrega de código en repositorios externos / Drive.
+- **Píldora del Cotizador y Tabs**: Re-escritura total con `gsap.to` para posicionamiento exacto y animación fluida al cambiar de panel sin overrides de layout (eliminado el keyframe de CSS).
+- **Navbar Glassmorphism**: Morphing dinámico a medida que el usuario hace scroll, modificando el desenfoque y contraste, todo acelerado por GPU.
+
+---
+
 ### [1.1.0] — 2026-09-17 · SEO & Social Sharing
 
 #### ✨ Añadido
