@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveals();
     initParallaxImages();
     initCardTilt();
-    initMagneticButtons();
     initScrollWheelAnim();
     initServiceCards();
     initRoadmapTimeline();
@@ -37,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initCopyEmail();
   initPricingTabs();
+  initPromoModal();
 });
 
 /* ============================================================
@@ -99,8 +99,8 @@ function initHeroMotion() {
   const actions = document.getElementById('hero-actions');
   if (actions) {
     tl.from(actions.children, {
-      opacity: 0, y: 14, scale: 0.95, stagger: 0.08,
-      duration: 0.5, ease: 'back.out(1.4)', clearProps: 'transform,opacity'
+      opacity: 0, stagger: 0.08,
+      duration: 0.5, ease: 'power2.out', clearProps: 'opacity'
     }, '-=0.35');
   }
 
@@ -234,28 +234,10 @@ function initCardTilt() {
 }
 
 /* ============================================================
-   7. MAGNETIC BUTTONS — cursor attraction effect
+   7. MAGNETIC BUTTONS (Desactivado para mantener botones estáticos)
    ============================================================ */
 function initMagneticButtons() {
-  const magnets = document.querySelectorAll('.btn-primary, .btn-outline, .btn-whatsapp, .btn-nav-calendar');
-
-  magnets.forEach(btn => {
-    btn.addEventListener('mouseenter', () => gsap.set(btn, { willChange: 'transform' }));
-
-    btn.addEventListener('mousemove', (e) => {
-      const r = btn.getBoundingClientRect();
-      const dx = e.clientX - (r.left + r.width / 2);
-      const dy = e.clientY - (r.top + r.height / 2);
-      gsap.to(btn, { x: dx * 0.28, y: dy * 0.28, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
-    });
-
-    btn.addEventListener('mouseleave', () => {
-      gsap.to(btn, {
-        x: 0, y: 0, duration: 0.55,
-        ease: 'elastic.out(1, 0.4)', clearProps: 'willChange', overwrite: 'auto'
-      });
-    });
-  });
+  // Animación de movimiento de botones desactivada a petición
 }
 
 /* ============================================================
@@ -359,6 +341,8 @@ function initBrandsReveal() {
 /* ============================================================
    12. COTIZADOR INTERACTIVO
    ============================================================ */
+let updateCotizadorGlobal = null;
+
 function initCotizador() {
   const sectorChips = document.querySelectorAll('.sector-chip');
   const sectorInput = document.getElementById('contact-sector-input');
@@ -370,16 +354,23 @@ function initCotizador() {
   function updateCotizador() {
     if (sectorInput) sectorInput.value = currentSector;
     if (whatsappBtn) {
-      const waText = encodeURIComponent(
-        `¡Hola Samuel! Estuve revisando tu portfolio y me interesa conversar sobre un proyecto para el sector de ${currentSector}.\n\n` +
-        `¿Podemos coordinar para revisar alcance y plazos?`
-      );
-      whatsappBtn.href = `https://wa.me/5491178281814?text=${waText}`;
+      const couponInput = document.getElementById('contact-coupon');
+      const hasCoupon = couponInput && couponInput.value.trim();
+      let waMessage = `¡Hola Samuel! Estuve revisando tu portfolio y me interesa conversar sobre un proyecto para el sector de ${currentSector}.`;
+
+      if (hasCoupon) {
+        waMessage += `\n\n🎟️ Cupón aplicado: ${couponInput.value.trim()} (10% de descuento en el total - Lanzamiento Web hasta el 10 de octubre).`;
+      }
+
+      waMessage += `\n\n¿Podemos coordinar para revisar alcance y plazos?`;
+      whatsappBtn.href = `https://wa.me/5491178281814?text=${encodeURIComponent(waMessage)}`;
     }
     if (messageArea && !messageArea.value) {
       messageArea.placeholder = `Describe brevemente tus requerimientos para el sector de ${currentSector} (objetivos, funcionalidades, plazos deseados)…`;
     }
   }
+
+  updateCotizadorGlobal = updateCotizador;
 
   sectorChips.forEach(chip => {
     chip.addEventListener('click', () => {
@@ -387,10 +378,6 @@ function initCotizador() {
       chip.classList.add('active');
       chip.setAttribute('aria-checked', 'true');
       currentSector = chip.getAttribute('data-sector') || chip.textContent.trim();
-
-      if (!prefersReduced && typeof gsap !== 'undefined') {
-        gsap.fromTo(chip, { scale: 0.88 }, { scale: 1, duration: 0.45, ease: 'elastic.out(1, 0.5)' });
-      }
       updateCotizador();
     });
   });
@@ -439,7 +426,7 @@ function initMobileNavigation() {
 }
 
 /* ============================================================
-   14. CONTACT FORM
+   14. CONTACT FORM — Redirección a WhatsApp (+54 11 7828 1814)
    ============================================================ */
 function initContactForm() {
   const form       = document.getElementById('contact-form');
@@ -468,25 +455,48 @@ function initContactForm() {
       return;
     }
 
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Enviando mensaje…</span>';
+    const sectorVal = (document.getElementById('contact-sector-input')?.value || 'General').trim();
+    const couponInput = document.getElementById('contact-coupon');
+    const couponVal = couponInput ? couponInput.value.trim() : '';
+
+    let waMessage = `¡Hola Samuel! Vengo desde tu web para cotizar un proyecto.\n\n` +
+      `📌 *Sector:* ${sectorVal}\n` +
+      `👤 *Nombre / Empresa:* ${name.value.trim()}\n` +
+      `✉️ *Email:* ${email.value.trim()}\n`;
+
+    if (couponVal) {
+      waMessage += `🏷️ *Cupón aplicado:* ${couponVal} (10% de descuento en el presupuesto - Lanzamiento Web hasta el 10/10/2026)\n`;
     }
 
-    setTimeout(() => {
-      if (successMsg) {
-        successMsg.classList.add('show');
-        if (!prefersReduced && typeof gsap !== 'undefined') {
-          gsap.from(successMsg, { opacity: 0, scale: 0.9, y: 10, duration: 0.5, ease: 'back.out(1.5)' });
-        }
+    waMessage += `\n📝 *Mensaje / Requerimiento:*\n${message.value.trim()}`;
+
+    // Destinatario: +541178281814 (formato internacional WhatsApp Argentina: 5491178281814)
+    const waUrl = `https://wa.me/5491178281814?text=${encodeURIComponent(waMessage)}`;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Abriendo WhatsApp…</span>';
+    }
+
+    if (successMsg) {
+      successMsg.classList.add('show');
+      if (!prefersReduced && typeof gsap !== 'undefined') {
+        gsap.from(successMsg, { opacity: 0, scale: 0.9, y: 10, duration: 0.5, ease: 'back.out(1.5)' });
       }
+    }
+
+    showToast('✓ Conectando con WhatsApp (+54 11 7828 1814)...');
+
+    setTimeout(() => {
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+
       form.reset();
       initCotizador();
 
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = `
-          <span id="submit-text">Enviar mensaje</span>
+          <span id="submit-text">Enviar a WhatsApp</span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M7 17L17 7M17 7H7M17 7V17" />
@@ -494,9 +504,8 @@ function initContactForm() {
         `;
       }
 
-      showToast('✓ Mensaje enviado correctamente');
       setTimeout(() => { if (successMsg) successMsg.classList.remove('show'); }, 7000);
-    }, 700);
+    }, 600);
   });
 }
 
@@ -614,3 +623,203 @@ function initPricingTabs() {
     if (activeTab) movePillToTab(activeTab, true);
   });
 }
+
+/* ============================================================
+   17. PROMO MODAL & CUPÓN (LANZAMIENTO WEB 2026)
+   ============================================================ */
+function initPromoModal() {
+  const modal = document.getElementById('promo-modal');
+  const closeBtn = document.getElementById('promo-close-btn');
+  const skipBtn = document.getElementById('promo-skip-btn');
+  const redeemBtn = document.getElementById('promo-redeem-btn');
+  const copyBtn = document.getElementById('promo-copy-btn');
+  const floatingTrigger = document.getElementById('promo-floating-trigger');
+  const couponBadge = document.getElementById('form-coupon-badge');
+  const couponInput = document.getElementById('contact-coupon');
+  const removeCouponBtn = document.getElementById('fcb-remove-btn');
+
+  if (!modal) return;
+
+  const COUPON_CODE = 'WEB2026';
+
+  function applyCoupon(silent = false) {
+    if (couponInput) couponInput.value = COUPON_CODE;
+    if (couponBadge) {
+      couponBadge.style.display = 'flex';
+      couponBadge.removeAttribute('hidden');
+    }
+
+    try {
+      sessionStorage.setItem('promo_redeemed', 'true');
+    } catch (_) {}
+
+    if (typeof updateCotizadorGlobal === 'function') {
+      updateCotizadorGlobal();
+    }
+
+    if (floatingTrigger) {
+      floatingTrigger.classList.remove('visible');
+    }
+
+    if (!silent) {
+      showToast('✓ Cupón WEB2026 aplicado: 10% de descuento en tu presupuesto');
+    }
+  }
+
+  function removeCoupon() {
+    if (couponInput) couponInput.value = '';
+    if (couponBadge) {
+      couponBadge.style.display = 'none';
+      couponBadge.setAttribute('hidden', '');
+    }
+
+    try {
+      sessionStorage.removeItem('promo_redeemed');
+    } catch (_) {}
+
+    if (typeof updateCotizadorGlobal === 'function') {
+      updateCotizadorGlobal();
+    }
+
+    if (floatingTrigger) {
+      floatingTrigger.classList.add('visible');
+    }
+
+    showToast('Cupón promocional removido');
+  }
+
+  function openPromoModal() {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    if (floatingTrigger) {
+      floatingTrigger.classList.remove('visible');
+    }
+
+    if (!prefersReduced && typeof gsap !== 'undefined') {
+      const card = modal.querySelector('.promo-modal-card');
+      if (card) {
+        gsap.fromTo(card,
+          { opacity: 0, scale: 0.9, y: 24 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: 'back.out(1.5)', clearProps: 'transform,opacity' }
+        );
+      }
+    }
+  }
+
+  function closePromoModal(userDismissed = true) {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+
+    if (userDismissed) {
+      try {
+        sessionStorage.setItem('promo_dismissed', 'true');
+      } catch (_) {}
+    }
+
+    let isRedeemed = false;
+    try {
+      isRedeemed = sessionStorage.getItem('promo_redeemed') === 'true';
+    } catch (_) {}
+
+    if (!isRedeemed && floatingTrigger) {
+      floatingTrigger.classList.add('visible');
+    }
+  }
+
+  // Comprobar estado al cargar
+  let alreadyRedeemed = false;
+  let alreadyDismissed = false;
+  try {
+    alreadyRedeemed = sessionStorage.getItem('promo_redeemed') === 'true';
+    alreadyDismissed = sessionStorage.getItem('promo_dismissed') === 'true';
+  } catch (_) {}
+
+  if (alreadyRedeemed) {
+    applyCoupon(true);
+  } else if (!alreadyDismissed) {
+    // Abrir suavemente tras 2.5s
+    setTimeout(() => {
+      let nowRedeemed = false;
+      try {
+        nowRedeemed = sessionStorage.getItem('promo_redeemed') === 'true';
+      } catch (_) {}
+      if (!modal.classList.contains('open') && !nowRedeemed) {
+        openPromoModal();
+      }
+    }, 2500);
+  } else if (floatingTrigger) {
+    floatingTrigger.classList.add('visible');
+  }
+
+  // Acción de Canjear
+  if (redeemBtn) {
+    redeemBtn.addEventListener('click', () => {
+      applyCoupon(false);
+      closePromoModal(false);
+
+      const cotizadorSec = document.getElementById('cotizador');
+      const formCard = document.querySelector('.clean-form-panel');
+
+      if (cotizadorSec) {
+        cotizadorSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (formCard) {
+        setTimeout(() => {
+          formCard.classList.add('form-coupon-highlight');
+          setTimeout(() => formCard.classList.remove('form-coupon-highlight'), 1300);
+        }, 550);
+      }
+    });
+  }
+
+  // Acción de Copiar
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const copyTextSpan = copyBtn.querySelector('.copy-btn-text');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(COUPON_CODE).then(() => {
+          if (copyTextSpan) copyTextSpan.textContent = '¡Copiado!';
+          showToast('✓ Cupón WEB2026 copiado al portapapeles');
+          setTimeout(() => {
+            if (copyTextSpan) copyTextSpan.textContent = 'Copiar';
+          }, 2000);
+        }).catch(() => {
+          showToast(`Cupón: ${COUPON_CODE}`);
+        });
+      } else {
+        showToast(`Cupón: ${COUPON_CODE}`);
+      }
+    });
+  }
+
+  // Cierre por botones, fondo o tecla Esc
+  if (closeBtn) closeBtn.addEventListener('click', () => closePromoModal(true));
+  if (skipBtn) skipBtn.addEventListener('click', () => closePromoModal(true));
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closePromoModal(true);
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closePromoModal(true);
+    }
+  });
+
+  // Reabrir con gatillador flotante
+  if (floatingTrigger) {
+    floatingTrigger.addEventListener('click', openPromoModal);
+  }
+
+  // Quitar cupón del formulario
+  if (removeCouponBtn) {
+    removeCouponBtn.addEventListener('click', removeCoupon);
+  }
+}
+
