@@ -5,8 +5,8 @@ test.describe('Promo Modal & Cupón WEB2026', () => {
     // Escuchar window.open
     await page.addInitScript(() => {
       (window as any).openedUrls = [];
-      window.open = (url: string) => {
-        (window as any).openedUrls.push(url);
+      window.open = (url?: string | URL, _target?: string, _features?: string): Window | null => {
+        if (url) (window as any).openedUrls.push(url.toString());
         return null;
       };
     });
