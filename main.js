@@ -171,6 +171,8 @@ function initScrollReveals() {
    5. PARALLAX — case study images on scroll
    ============================================================ */
 function initParallaxImages() {
+  // Animación de movimiento eliminada por petición del usuario
+  /*
   document.querySelectorAll('.case-card-img').forEach(img => {
     gsap.set(img, { willChange: 'transform' });
     gsap.to(img, {
@@ -181,6 +183,7 @@ function initParallaxImages() {
       }
     });
   });
+  */
 
   document.querySelectorAll('.brand-logo-item').forEach((item, i) => {
     gsap.to(item, {
